@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useStateStore = defineStore('state', () => {
   const power = ref(true)
+  const emergency = ref(false)
 
   const systems = reactive(
     new Map<string, { state: boolean; color: string; icon: string; value: number }>([
@@ -15,7 +16,7 @@ export const useStateStore = defineStore('state', () => {
   )
   // Components
   const librarySlider = ref(0)
-  const powerSwitch = ref(false)
+  const powerSwitch = ref(true)
   const powerButton = ref(true)
   const deviceInput = ref([''])
 
@@ -59,6 +60,7 @@ export const useStateStore = defineStore('state', () => {
     powerButton,
     deviceInput,
     systems,
+    emergency,
     Light,
     On,
     powerAll,

@@ -1,5 +1,5 @@
 <template>
-  <v-list>
+  <v-list class="bg-background">
     <v-list-item v-for="light in lights" :key="light">
       <v-chip :text="light" :prepend-icon="state.getIcon(light)" variant="text" @click="state.toggleSystem(light)"
         :disabled="!state.powered">
