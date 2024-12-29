@@ -30,6 +30,7 @@ const vuetify = createVuetify({
     VTooltip: {
       location: 'bottom',
     },
+    vBtnToggle: {},
   },
   components,
   directives,

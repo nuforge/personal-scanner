@@ -1,5 +1,5 @@
 <template>
-  <v-sheet class="d-inline-flex">
+  <v-sheet class="d-inline-flex align-center">
     <v-btn-toggle class="bg-surface" v-model="state.deviceInput" multiple>
       <v-btn stacked :text="button" v-for="button in buttons" :key="button" append-icon="mdi-label" variant="plain"
         :value="button">

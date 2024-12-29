@@ -53,84 +53,32 @@
         </v-row>
 
         <v-card :disabled="!state.powered" class="d-inline-flex flex-column ">
-          <v-card-title><v-label>device input</v-label></v-card-title>
-          <v-card-text>
+          <v-card-title>
+            <v-label>device input</v-label>
+          </v-card-title>
+          <v-card-actions>
             <DeviceInput />
-          </v-card-text>
+          </v-card-actions>
         </v-card>
 
         <v-card :disabled="!state.powered" class="d-inline-flex flex-column ">
           <v-card-title><v-label>com transmission</v-label></v-card-title>
-          <v-row>
-            <v-col cols="auto">
-              <v-card class="d-inline-flex" :disabled="!state.powered">
-                <v-card-text>
-                  <v-btn-toggle class="d-inline-flex flex-column justify-space-around" variant="plain">
-                    <v-btn text="acpt"></v-btn>
-                    <v-divider></v-divider>
-                    <v-btn text="pool"></v-btn>
-                  </v-btn-toggle>
-                </v-card-text>
-              </v-card>
-            </v-col>
-            <v-col cols="auto">
-              <v-card class="d-inline-flex" :disabled="!state.powered">
-                <v-card-text>
-                  <v-btn-toggle class="d-inline-flex flex-column justify-space-around" variant="plain">
-                    <v-btn text="intershp"></v-btn>
-                    <v-divider></v-divider>
-                    <v-btn text="tricrdr"></v-btn>
-                  </v-btn-toggle>
-                </v-card-text>
-              </v-card>
-            </v-col>
-            <v-col cols="auto">
-              <v-card>
-                <v-card-text>
-                  <v-label class="emrg me-2">E<br />M<br />R<br />G</v-label>
-                  <EmergencyButton />
-                </v-card-text>
-              </v-card>
-            </v-col>
-          </v-row>
+          <v-card-actions>
+            <BtnAcctPool />
+            <BtnIntershpTricrdr />
+            <EmergencyButton />
+          </v-card-actions>
         </v-card>
 
 
-        <v-card class="rounded-lg pa-2">
+        <v-card :disabled="!state.powered" class="d-inline-flex flex-column ">
           <v-card-title><v-label>image record</v-label></v-card-title>
-          <v-row>
-            <v-col cols="auto">
-              <v-card class="d-inline-flex" :disabled="!state.powered">
-                <v-card-text class="bg-surface pa-2 rounded">
-                  <v-btn-toggle class="d-inline-flex flex-column  justify-space-around" variant="plain">
-                    <v-btn text="fwd"></v-btn>
-                    <v-divider></v-divider>
-                    <v-btn text="imput"></v-btn>
-                  </v-btn-toggle>
-                </v-card-text>
-              </v-card>
-            </v-col>
-            <v-col cols="auto">
-              <v-card class="d-inline-flex" :disabled="!state.powered">
-                <v-card-text class="bg-surface pa-2 rounded">
-                  <v-btn-toggle class="d-inline-flex flex-column justify-space-around" variant="plain">
-                    <v-btn text="rwd"></v-btn>
-                    <v-divider></v-divider>
-                    <v-btn text="erase"></v-btn>
-                  </v-btn-toggle>
-                </v-card-text>
-              </v-card>
-            </v-col>
-            <v-col cols="auto">
-              <v-btn text="I" :disabled="!state.powered"></v-btn>
-              <v-btn text="E" :disabled="!state.powered"></v-btn>
-            </v-col>
-          </v-row>
+          <v-card-actions>
+            <BtnFwdInput />
+            <BtnRwdErase />
+            <InternalExternalButtons />
+          </v-card-actions>
         </v-card>
-
-
-
-        <v-spacer></v-spacer>
       </v-main>
     </v-app>
   </v-responsive>
@@ -138,33 +86,26 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import PowerSwitch from './components/tricorder/PowerSwitch.vue';
+import PowerSwitch from '@/components/tricorder/PowerSwitch.vue';
 const theme = ref('dark')
-import LibrarySlider from './components/tricorder/LibrarySlider.vue';
-import IndicatorLights from './components/tricorder/IndicatorLights.vue';
-import MainScreen from './components/tricorder/MainScreen.vue';
-import PowerButton from './components/tricorder/PowerButton.vue';
-import DeviceInput from './components/tricorder/DeviceInput.vue';
-import FunctionButtons from './components/tricorder/FunctionButtons.vue';
+import LibrarySlider from '@/components/tricorder/LibrarySlider.vue';
+import IndicatorLights from '@/components/tricorder/IndicatorLights.vue';
+import MainScreen from '@/components/tricorder/MainScreen.vue';
+import PowerButton from '@/components/tricorder/PowerButton.vue';
+import DeviceInput from '@/components/tricorder/DeviceInput.vue';
+import FunctionButtons from '@/components/tricorder/FunctionButtons.vue';
 
 
 
 import { useStateStore } from '@/stores/state';
-import EmergencyButton from './components/tricorder/EmergencyButton.vue';
+import EmergencyButton from '@/components/tricorder/EmergencyButton.vue';
+import BtnAcctPool from '@/components/tricorder/BtnAcctPool.vue';
+import BtnIntershpTricrdr from '@/components/tricorder/BtnIntershpTricrdr.vue';
+import BtnFwdInput from '@/components/tricorder/BtnFwdInput.vue';
+import BtnRwdErase from '@/components/tricorder/BtnRwdErase.vue';
+import InternalExternalButtons from '@/components/tricorder/InternalExternalButtons.vue';
 const state = useStateStore()
 
 </script>
 
-<style scoped>
-.emrg {
-  font-size: 0.5rem;
-  font-weight: bold;
-  text-align: center;
-}
-
-.vertical-text {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-
-}
-</style>
+<style scoped></style>

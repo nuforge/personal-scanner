@@ -1,5 +1,5 @@
 <template>
-  <v-table class="text-center">
+  <v-table class="text-center" density="compact" hover>
     <tbody>
       <tr v-for="[key, system] in state.getActiveSystems()" :key="key">
         <td><v-icon :icon="system.icon" :color="system.color"></v-icon> </td>
