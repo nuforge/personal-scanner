@@ -1,36 +1,37 @@
 <template>
-
   <v-table class="text-center">
-    <thead>
-      <tr>
-        <th class="text-center">
-          sys
-        </th>
-        <th class="text-center">
-          pwr
-        </th>
-      </tr>
-    </thead>
     <tbody>
-      <tr v-for="system in state.systems.keys()" :key="system">
-        <td><v-icon :icon="state.getIcon(system)" :color="state.getColor(system)"></v-icon> </td>
-        <td>{{ state.getValue(system)
+      <tr v-for="[key, system] in state.getActiveSystems()" :key="key">
+        <td><v-icon :icon="system.icon" :color="system.color"></v-icon> </td>
+        <td>{{ system.value
           }}</td>
       </tr>
     </tbody>
   </v-table>
-
-  <v-card :style="{
-    background: `rgba(${state.getValue('delta')}, ${state.getValue('gamma')},
-  ${state.getValue('beta')},${state.getValue('alpha')})`
-  }"><v-icon icon="mdi-home"></v-icon>
-  </v-card>
-
+  <v-btn prepend-icon="mdi-circle-outline" append-icon="mdi-circle" text="data" :color="color" variant="tonal"
+    :disabled="!state.powered" block class="d-flex justify-space-between">
+    <template #prepend>
+      <v-icon :color="appearance"></v-icon>
+    </template>
+    <template #default>
+      Label
+    </template>
+    <template #append>
+      <v-icon :color="appearance"></v-icon>
+    </template>
+  </v-btn>
 </template>
 
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useStateStore } from '@/stores/state';
 const state = useStateStore()
+
+const color = computed(() => `rgb(${state.getValue('delta')}, ${state.getValue('gamma')}, ${state.getValue('beta')})`)
+
+const appearance = computed(() => `rgba(${state.getValue('delta')}, ${state.getValue('gamma')}, ${state.getValue('beta')}, ${state.getValue('alpha')})`)
+
+
 
 </script>

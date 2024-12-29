@@ -12,7 +12,7 @@ export const useStateStore = defineStore('state', () => {
     >([
       [
         'power',
-        { state: true, color: 'success', icon: 'mdi-power', value: 0, active: false, max: 100 },
+        { state: true, color: 'success', icon: 'mdi-power', value: 100, active: false, max: 100 },
       ],
       [
         'alpha',
@@ -20,15 +20,15 @@ export const useStateStore = defineStore('state', () => {
       ],
       [
         'beta',
-        { state: false, color: 'secondary', icon: 'mdi-beta', value: 0, active: false, max: 256 },
+        { state: false, color: 'secondary', icon: 'mdi-beta', value: 0, active: false, max: 255 },
       ],
       [
         'delta',
-        { state: false, color: 'success', icon: 'mdi-delta', value: 0, active: false, max: 256 },
+        { state: false, color: 'success', icon: 'mdi-delta', value: 0, active: false, max: 255 },
       ],
       [
         'gamma',
-        { state: false, color: 'warning', icon: 'mdi-gamma', value: 0, active: false, max: 256 },
+        { state: false, color: 'warning', icon: 'mdi-gamma', value: 0, active: false, max: 255 },
       ],
     ]),
   )
@@ -51,6 +51,7 @@ export const useStateStore = defineStore('state', () => {
 
   const On = (key: string) => systems.get(key)!.state
 
+  // Power
   const powerAll = () => {
     systems.forEach((light) => {
       light.state = true
@@ -59,6 +60,11 @@ export const useStateStore = defineStore('state', () => {
 
   const togglePower = () => {
     power.value = !power.value
+  }
+
+  // Systems
+  const getActiveSystems = () => {
+    return Array.from(systems.entries()).filter(([, system]) => system.active === true)
   }
 
   const toggleSystem = (key: string) => {
@@ -74,10 +80,11 @@ export const useStateStore = defineStore('state', () => {
 
   const Light = (key: string) => systems.get(key)?.color && powered.value
 
+  // Functions
   const applyDelta = (value: number) => {
     Array.from(systems.entries())
-      .filter(([key, system]) => system.active === true)
-      .forEach(([key, system]) => {
+      .filter(([, system]) => system.active === true)
+      .forEach(([, system]) => {
         system.value += value * system.max
         system.value = Math.round(Math.max(0, Math.min(system.max, system.value)) * 100) / 100
       })
@@ -104,6 +111,7 @@ export const useStateStore = defineStore('state', () => {
     getValue,
     getColor,
     getMax,
+    getActiveSystems,
     togglePower,
     toggleSystem,
     applyDelta,

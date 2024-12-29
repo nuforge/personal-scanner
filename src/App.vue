@@ -28,8 +28,10 @@
             <v-btn text="E" size="small" :disabled="!state.powered"></v-btn>
           </v-card-actions>
         </v-card>
+
+
         <v-row no-gutters>
-          <v-col class="d-inline-flex flex-column align-center" cols="auto">
+          <v-col class="d-flex flex-column align-center" cols="auto">
             <v-card>
               <v-card-actions>
                 <IndicatorLights :disabled="!state.powered" />
@@ -37,7 +39,7 @@
             </v-card>
             <v-card>
               <v-card-actions>
-                <LibrarySlider />
+                <LibrarySlider :disabled="!state.powered" />
               </v-card-actions>
             </v-card>
           </v-col>
@@ -49,14 +51,16 @@
             </v-card>
           </v-col>
         </v-row>
-        <v-card :disabled="!state.powered">
-          <v-card-title>device input</v-card-title>
-          <v-card-text class="d-inline-flex flex-column align-center">
+
+        <v-card :disabled="!state.powered" class="d-inline-flex flex-column ">
+          <v-card-title><v-label>device input</v-label></v-card-title>
+          <v-card-text>
             <DeviceInput />
           </v-card-text>
         </v-card>
-        <v-card>
-          <v-card-title>com transmission</v-card-title>
+
+        <v-card :disabled="!state.powered" class="d-inline-flex flex-column ">
+          <v-card-title><v-label>com transmission</v-label></v-card-title>
           <v-row>
             <v-col cols="auto">
               <v-card class="d-inline-flex" :disabled="!state.powered">
@@ -93,7 +97,7 @@
 
 
         <v-card class="rounded-lg pa-2">
-          <v-card-title>image record</v-card-title>
+          <v-card-title><v-label>image record</v-label></v-card-title>
           <v-row>
             <v-col cols="auto">
               <v-card class="d-inline-flex" :disabled="!state.powered">
