@@ -78,7 +78,7 @@ export const useStateStore = defineStore('state', () => {
     Array.from(systems.entries())
       .filter(([key, system]) => system.active === true)
       .forEach(([key, system]) => {
-        system.value += value
+        system.value += value * system.max
         system.value = Math.round(Math.max(0, Math.min(system.max, system.value)) * 100) / 100
       })
   }

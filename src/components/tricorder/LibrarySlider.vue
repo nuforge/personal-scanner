@@ -1,21 +1,10 @@
 <template>
-  <v-sheet>
-    <v-row class="bg-background">
-      <v-col class="d-flex text-center align-center">
-        <v-label><v-icon icon="mdi-arrow-up"></v-icon>A</v-label>
-      </v-col>
-      <v-col class="rounded-lg">
-        <v-slider direction="vertical" v-model="slider" min="-1" max="1" step="0.01" :thumb-color="trackColor"
-          :track-color="deltaNeg ? trackColor : 'surface'" :thumb-size="valueSize"
-          :track-fill-color="deltaPos ? trackColor : 'surface'" track-size="10" @start="startDrag" @end="endDrag"
-          :disabled="!state.powered">
-        </v-slider>
-      </v-col>
-      <v-col class="d-flex text-center align-center">
-        <v-label><v-icon icon="mdi-arrow-down"></v-icon>
-          B</v-label>
-      </v-col>
-    </v-row>
+  <v-sheet class="bg-background px-2 ma-0 rounded-lg">
+    <v-slider direction="vertical" v-model="slider" min="-1" max="1" step="0.01" :thumb-color="trackColor"
+      :track-color="deltaNeg ? trackColor : 'surface'" :thumb-size="valueSize"
+      :track-fill-color="deltaPos ? trackColor : 'surface'" track-size="16" @start="startDrag" @end="endDrag"
+      :disabled="!state.powered">
+    </v-slider>
   </v-sheet>
 </template>
 
@@ -31,12 +20,12 @@ const initVal = ref(0)
 
 // better to track change, not just the value
 
-const positive = computed(() => {
-  return slider.value > 0
-})
-const negative = computed(() => {
-  return slider.value < 0
-})
+// const positive = computed(() => {
+//   return slider.value > 0
+// })
+// const negative = computed(() => {
+//   return slider.value < 0
+// })
 
 const deltaPos = computed(() => {
   return deltaValue.value > 0
@@ -75,3 +64,10 @@ const resetSlider = () => {
 }
 
 </script>
+
+<style scoped>
+.v-slider.v-input--vertical:deep(.v-input__control) {
+  min-height: 100px !important;
+  height: 100%;
+}
+</style>

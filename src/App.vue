@@ -1,44 +1,54 @@
 <template>
   <v-responsive class="rounded">
     <v-app :theme="theme">
-      <v-main>
+      <v-main max-width="400" class="mx-auto">
         <v-toolbar>
           <v-btn variant="plain" :ripple="false">
             <PowerSwitch />
           </v-btn>
         </v-toolbar>
+
         <v-card>
-          <v-card-actions class="d-flex justify-space-between">
-            <PowerButton :disabled="!state.powered" />
+          <v-card-actions class="d-flex justify-space-between ">
             <v-sheet>
-              <v-label class="text-subtitle-1" text="Σx" />
-              <v-label class="text-subtitle-1" text="sys" />
+              <PowerButton :disabled="!state.powered" />
+            </v-sheet>
+            <v-sheet>
+              <v-label class="text-subtitle-2" text="Σx" />
+              <v-label class="text-subtitle-2" text="sys" />
             </v-sheet>
             <v-sheet>
               <FunctionButtons />
             </v-sheet>
             <v-sheet>
-              <v-label><v-icon icon="mdi-arrow-left"></v-icon> data</v-label>
-              <v-label text="sense"><v-icon icon="mdi-arrow-right"></v-icon></v-label>
+              <v-label class="text-subtitle-2"><v-icon icon="mdi-arrow-left"></v-icon> data</v-label>
+              <v-label class="text-subtitle-2" text="sense"><v-icon icon="mdi-arrow-right"></v-icon></v-label>
             </v-sheet>
             <v-btn text="I" size="small" :disabled="!state.powered"></v-btn>
             <v-btn text="E" size="small" :disabled="!state.powered"></v-btn>
           </v-card-actions>
         </v-card>
-
-
-        <v-card>
-          <v-card-text class="d-flex flex-column align-center">
-            <IndicatorLights :disabled="!state.powered" />
-          </v-card-text>
-        </v-card>
-        <v-card>
-          <v-card-text class="d-flex flex-column align-center">
-            <LibrarySlider />
-          </v-card-text>
-        </v-card>
-
-        <MainScreen :disabled="!state.powered" />
+        <v-row no-gutters>
+          <v-col class="d-inline-flex flex-column align-center" cols="auto">
+            <v-card>
+              <v-card-actions>
+                <IndicatorLights :disabled="!state.powered" />
+              </v-card-actions>
+            </v-card>
+            <v-card>
+              <v-card-actions>
+                <LibrarySlider />
+              </v-card-actions>
+            </v-card>
+          </v-col>
+          <v-col>
+            <v-card>
+              <v-card-text>
+                <MainScreen :disabled="!state.powered" />
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
         <v-card :disabled="!state.powered">
           <v-card-title>device input</v-card-title>
           <v-card-text class="d-inline-flex flex-column align-center">
@@ -116,6 +126,7 @@
 
 
 
+        <v-spacer></v-spacer>
       </v-main>
     </v-app>
   </v-responsive>
