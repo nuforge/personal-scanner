@@ -5,7 +5,7 @@
 
         <v-expansion-panels bg-color="transparent" flat static variant="default">
           <v-expansion-panel v-model="state.openCase" value="bar">
-            <v-expansion-panel-title color="surface" :icon="false">
+            <v-expansion-panel-title color="surface" :icon="false" variant="plain">
               <v-btn variant="plain" :ripple="false">
                 <PowerSwitch />
               </v-btn>
