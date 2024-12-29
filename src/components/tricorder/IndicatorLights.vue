@@ -4,7 +4,7 @@
       <v-chip :text="light" :prepend-icon="state.getIcon(light)" variant="text" @click="state.toggleSystem(light)"
         :disabled="!state.powered">
         <template v-slot:prepend>
-          <v-icon :color="state.getLight(light).state ? state.getColor(light) : 'disabled'"
+          <v-icon :color="state.checkActive(light) ? state.getColor(light) : 'disabled'"
             :disabled="!state.checkPowered(light)"></v-icon>
         </template>
       </v-chip>

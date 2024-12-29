@@ -4,7 +4,7 @@
 
       <v-main>
         <v-container>
-          <v-row>
+          <v-row class="bg-surface">
             <v-col>
               <PowerSwitch />
             </v-col>
