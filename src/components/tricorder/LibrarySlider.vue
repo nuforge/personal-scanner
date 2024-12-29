@@ -1,10 +1,11 @@
 <template>
-  <v-sheet class="bg-background px-2 ma-0 rounded-lg">
-    <v-slider direction="vertical" v-model="slider" min="-1" max="1" step="0.01" :thumb-color="trackColor"
-      :track-color="deltaNeg ? trackColor : 'surface'" :thumb-size="valueSize"
-      :track-fill-color="deltaPos ? trackColor : 'surface'" track-size="16" @start="startDrag" @end="endDrag"
+  <v-sheet>
+    <v-slider direction="vertical" v-model="slider" min="0" max="1" step="0.01" :thumb-color="thumbColor"
+      track-size="20" :track-color="deltaNeg ? trackColor : 'background '" :thumb-size="slider ? 40 : 0"
+      :track-fill-color="deltaPos ? trackColor : 'background '" @start="startDrag" @end="endDrag"
       :disabled="!state.powered">
     </v-slider>
+    <v-label>library</v-label>
   </v-sheet>
 </template>
 
@@ -14,7 +15,6 @@ import { useStateStore } from '@/stores/state';
 const state = useStateStore()
 
 const slider = ref(0)
-const scale = ref(.2)
 const initVal = ref(0)
 
 
@@ -39,22 +39,27 @@ const deltaValue = computed(() => {
 })
 
 
-const valueSize = computed(() => {
-  return Math.abs(deltaValue.value) * scale.value
+
+const thumbColor = computed(() => {
+  const sum = deltaValue.value
+  if (sum === 0) return 'surface'
+  return sum != 0 && sum > 0 ? 'success' : 'text'
 })
 
 const trackColor = computed(() => {
   const sum = deltaValue.value
   if (sum === 0) return 'text'
-  return sum != 0 && sum > 0 ? 'primary' : 'warning'
+  return sum != 0 && sum > 0 ? 'success' : 'text'
 })
 
 const startDrag = () => {
+  console.log('startDrag', slider.value)
   initVal.value = slider.value
 }
 
 const endDrag = () => {
-  state.applyDelta(slider.value)
+  console.log('endDrag: ', deltaValue.value, 'was', initVal.value)
+  state.applyDelta(deltaValue.value)
   resetSlider()
 }
 

@@ -8,27 +8,75 @@ export const useStateStore = defineStore('state', () => {
   const systems = reactive(
     new Map<
       string,
-      { state: boolean; color: string; icon: string; value: number; active: boolean; max: number }
+      {
+        state: boolean
+        color: string
+        icon: string
+        value: number
+        active: boolean
+        max: number
+        rgba: string
+      }
     >([
       [
         'power',
-        { state: true, color: 'success', icon: 'mdi-power', value: 100, active: false, max: 100 },
+        {
+          state: true,
+          color: 'success',
+          icon: 'mdi-power',
+          value: 100,
+          active: false,
+          max: 100,
+          rgba: 'green',
+        },
       ],
       [
         'alpha',
-        { state: false, color: 'primary', icon: 'mdi-alpha', value: 0, active: false, max: 1 },
+        {
+          state: false,
+          color: 'primary',
+          icon: 'mdi-alpha',
+          value: 0,
+          active: false,
+          max: 1,
+          rgba: 'white',
+        },
       ],
       [
         'beta',
-        { state: false, color: 'secondary', icon: 'mdi-beta', value: 0, active: false, max: 255 },
+        {
+          state: false,
+          color: 'secondary',
+          icon: 'mdi-beta',
+          value: 0,
+          active: false,
+          max: 255,
+          rgba: 'blue',
+        },
       ],
       [
         'delta',
-        { state: false, color: 'success', icon: 'mdi-delta', value: 0, active: false, max: 255 },
+        {
+          state: false,
+          color: 'success',
+          icon: 'mdi-delta',
+          value: 0,
+          active: false,
+          max: 255,
+          rgba: 'red',
+        },
       ],
       [
         'gamma',
-        { state: false, color: 'warning', icon: 'mdi-gamma', value: 0, active: false, max: 255 },
+        {
+          state: false,
+          color: 'warning',
+          icon: 'mdi-gamma',
+          value: 0,
+          active: false,
+          max: 255,
+          rgba: 'green',
+        },
       ],
     ]),
   )
@@ -42,6 +90,15 @@ export const useStateStore = defineStore('state', () => {
   // Computed
   const powered = computed(() => power.value && powerSwitch.value)
   const library = computed(() => librarySlider.value)
+
+  const systemsColor = computed(
+    () =>
+      `rgb(${systems.get('delta')?.value}, ${systems.get('gamma')?.value}, ${systems.get('beta')?.value})`,
+  )
+  const systemsAppearance = computed(
+    () =>
+      `rgba(${systems.get('delta')?.value}, ${systems.get('gamma')?.value}, ${systems.get('beta')?.value}, ${systems.get('alpha')?.value})`,
+  )
 
   const checkOn = (key: string) => systems.get(key)?.state
   const checkPowered = (key: string) =>
@@ -115,5 +172,7 @@ export const useStateStore = defineStore('state', () => {
     togglePower,
     toggleSystem,
     applyDelta,
+    systemsColor,
+    systemsAppearance,
   }
 })

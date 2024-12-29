@@ -24,13 +24,23 @@ const vuetify = createVuetify({
     VBtn: {
       variant: 'plain',
     },
+    VCard: {
+      flat: true,
+      class: 'bg-background mb-2',
+    },
     VCardActions: {
-      VBtn: { variant: 'tonal' },
+      class: 'bg-surface rounded pa-2',
+      VBtn: {
+        variant: 'tonal',
+      },
     },
     VTooltip: {
       location: 'bottom',
     },
     vBtnToggle: {},
+    VLabel: {
+      class: 'text-uppercase text-disabled text-caption	',
+    },
   },
   components,
   directives,

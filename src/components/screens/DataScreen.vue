@@ -1,10 +1,16 @@
 <template>
   <v-table class="text-center" density="compact" hover>
+    <thead>
+      <tr>
+        <th class="text-center"><v-icon icon="mdi-check"></v-icon></th>
+        <th class="text-center"><v-icon icon="mdi-battery-80"></v-icon></th>
+      </tr>
+    </thead>
     <tbody>
-      <tr v-for="[key, system] in state.getActiveSystems()" :key="key">
-        <td><v-icon :icon="system.icon" :color="system.color"></v-icon> </td>
-        <td>{{ system.value
-          }}</td>
+      <tr v-for="[key, system] in state.systems" :key="key">
+        <td><v-icon icon="mdi-circle-small" :color="system.rgba" v-if="system.active"></v-icon> </td>
+
+        <td>{{ Math.ceil(system.value / system.max * 100) }}%</td>
       </tr>
     </tbody>
   </v-table>

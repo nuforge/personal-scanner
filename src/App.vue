@@ -1,69 +1,54 @@
 <template>
   <v-responsive class="rounded">
     <v-app :theme="theme">
-      <v-main max-width="400" class="mx-auto">
+      <v-main max-width="390" class="mx-auto">
         <v-toolbar>
           <v-btn variant="plain" :ripple="false">
             <PowerSwitch />
           </v-btn>
         </v-toolbar>
 
-        <v-card>
-          <v-card-actions class="d-flex justify-space-between ">
+        <v-card :disabled="!state.powered">
+          <v-card-actions class="d-flex justify-space-evenly">
             <v-sheet>
-              <PowerButton :disabled="!state.powered" />
+              <PowerButton />
             </v-sheet>
             <v-sheet>
-              <v-label class="text-subtitle-2" text="Σx" />
-              <v-label class="text-subtitle-2" text="sys" />
+              <LabelExSys />
             </v-sheet>
             <v-sheet>
               <FunctionButtons />
             </v-sheet>
             <v-sheet>
-              <v-label class="text-subtitle-2"><v-icon icon="mdi-arrow-left"></v-icon> data</v-label>
-              <v-label class="text-subtitle-2" text="sense"><v-icon icon="mdi-arrow-right"></v-icon></v-label>
+              <LabelDataSense />
             </v-sheet>
-            <v-btn text="I" size="small" :disabled="!state.powered"></v-btn>
-            <v-btn text="E" size="small" :disabled="!state.powered"></v-btn>
+            <InternalExternalButtons />
           </v-card-actions>
         </v-card>
 
+        <v-card class="d-flex" :disabled="!state.powered">
+          <v-card-actions class="d-flex flex-column align-center">
+            <IndicatorLights />
+            <LibrarySlider />
+          </v-card-actions>
+          <v-card-text>
+            <MainScreen class="h-100" />
+          </v-card-text>
+        </v-card>
 
-        <v-row no-gutters>
-          <v-col class="d-flex flex-column align-center" cols="auto">
-            <v-card>
-              <v-card-actions>
-                <IndicatorLights :disabled="!state.powered" />
-              </v-card-actions>
-            </v-card>
-            <v-card>
-              <v-card-actions>
-                <LibrarySlider :disabled="!state.powered" />
-              </v-card-actions>
-            </v-card>
-          </v-col>
-          <v-col>
-            <v-card>
-              <v-card-text>
-                <MainScreen :disabled="!state.powered" />
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-
-        <v-card :disabled="!state.powered" class="d-inline-flex flex-column ">
+        <v-card :disabled="!state.powered">
           <v-card-title>
             <v-label>device input</v-label>
           </v-card-title>
-          <v-card-actions>
+          <v-card-actions class="d-flex justify-space-evenly align-center">
             <DeviceInput />
+            <DeviceLights />
           </v-card-actions>
         </v-card>
 
-        <v-card :disabled="!state.powered" class="d-inline-flex flex-column ">
+        <v-card :disabled="!state.powered">
           <v-card-title><v-label>com transmission</v-label></v-card-title>
-          <v-card-actions>
+          <v-card-actions class="d-flex justify-space-evenly">
             <BtnAcctPool />
             <BtnIntershpTricrdr />
             <EmergencyButton />
@@ -71,12 +56,18 @@
         </v-card>
 
 
-        <v-card :disabled="!state.powered" class="d-inline-flex flex-column ">
+        <v-card :disabled="!state.powered">
           <v-card-title><v-label>image record</v-label></v-card-title>
-          <v-card-actions>
+          <v-card-actions class="d-flex justify-space-evenly">
             <BtnFwdInput />
             <BtnRwdErase />
             <InternalExternalButtons />
+          </v-card-actions>
+        </v-card>
+
+        <v-card :disabled="!state.powered">
+          <v-card-actions>
+            <BtnID />
           </v-card-actions>
         </v-card>
       </v-main>
@@ -93,6 +84,7 @@ import IndicatorLights from '@/components/tricorder/IndicatorLights.vue';
 import MainScreen from '@/components/tricorder/MainScreen.vue';
 import PowerButton from '@/components/tricorder/PowerButton.vue';
 import DeviceInput from '@/components/tricorder/DeviceInput.vue';
+import DeviceLights from '@/components/tricorder/DeviceLights.vue';
 import FunctionButtons from '@/components/tricorder/FunctionButtons.vue';
 
 
@@ -103,7 +95,10 @@ import BtnAcctPool from '@/components/tricorder/BtnAcctPool.vue';
 import BtnIntershpTricrdr from '@/components/tricorder/BtnIntershpTricrdr.vue';
 import BtnFwdInput from '@/components/tricorder/BtnFwdInput.vue';
 import BtnRwdErase from '@/components/tricorder/BtnRwdErase.vue';
+import BtnID from '@/components/tricorder/BtnID.vue';
 import InternalExternalButtons from '@/components/tricorder/InternalExternalButtons.vue';
+import LabelExSys from '@/components/tricorder/LabelExSys.vue';
+import LabelDataSense from '@/components/tricorder/LabelDataSense.vue';
 const state = useStateStore()
 
 </script>
