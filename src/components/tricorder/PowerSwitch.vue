@@ -1,11 +1,7 @@
 <template>
-  <v-switch v-model="state.powerSwitch" inset color="green" density="compact" variant="filled" icon="mdi-power"
-    false-icon="mdi-power-off" true-icon="mdi-power">
+  <v-switch v-model="state.powerSwitch" inset color="green" density="compact" variant="filled" append-icon="mdi-power"
+    false-icon="mdi-power-off" @click.stop>
 
-    <template v-slot:prepend>
-      <v-icon :color="state.getLight('power') ? `disabled` : state.getColor('power')" :icon="`mdi-power`"
-        size="large" />
-    </template>
   </v-switch>
 </template>
 

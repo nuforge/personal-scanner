@@ -53,12 +53,10 @@ const trackColor = computed(() => {
 })
 
 const startDrag = () => {
-  console.log('startDrag', slider.value)
   initVal.value = slider.value
 }
 
 const endDrag = () => {
-  console.log('endDrag: ', deltaValue.value, 'was', initVal.value)
   state.applyDelta(deltaValue.value)
   resetSlider()
 }

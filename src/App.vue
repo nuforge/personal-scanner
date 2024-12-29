@@ -1,75 +1,83 @@
 <template>
-  <v-responsive class="rounded">
+  <v-responsive>
     <v-app :theme="theme">
-      <v-main max-width="390" class="mx-auto">
-        <v-toolbar>
-          <v-btn variant="plain" :ripple="false">
-            <PowerSwitch />
-          </v-btn>
-        </v-toolbar>
+      <v-main width="400" class="mx-auto">
 
-        <v-card :disabled="!state.powered">
-          <v-card-actions class="d-flex justify-space-evenly">
-            <v-sheet>
-              <PowerButton />
-            </v-sheet>
-            <v-sheet>
-              <LabelExSys />
-            </v-sheet>
-            <v-sheet>
-              <FunctionButtons />
-            </v-sheet>
-            <v-sheet>
-              <LabelDataSense />
-            </v-sheet>
-            <InternalExternalButtons />
-          </v-card-actions>
-        </v-card>
+        <v-expansion-panels bg-color="transparent" flat static variant="default">
+          <v-expansion-panel v-model="state.openCase" value="bar">
+            <v-expansion-panel-title color="surface" :icon="false">
+              <v-btn variant="plain" :ripple="false">
+                <PowerSwitch />
+              </v-btn>
+            </v-expansion-panel-title>
+            <v-expansion-panel-text>
 
-        <v-card class="d-flex" :disabled="!state.powered">
-          <v-card-actions class="d-flex flex-column align-center">
-            <IndicatorLights />
-            <LibrarySlider />
-          </v-card-actions>
-          <v-card-text>
-            <MainScreen class="h-100" />
-          </v-card-text>
-        </v-card>
+              <v-card :disabled="!state.powered">
+                <v-card-actions class="d-flex justify-space-around">
+                  <v-sheet>
+                    <PowerButton />
+                  </v-sheet>
+                  <v-sheet>
+                    <LabelExSys />
+                  </v-sheet>
+                  <v-sheet>
+                    <FunctionButtons />
+                  </v-sheet>
+                  <v-sheet>
+                    <LabelDataSense />
+                  </v-sheet>
+                  <InternalExternalButtons />
+                </v-card-actions>
+              </v-card>
 
-        <v-card :disabled="!state.powered">
-          <v-card-title>
-            <v-label>device input</v-label>
-          </v-card-title>
-          <v-card-actions class="d-flex justify-space-evenly align-center">
-            <DeviceInput />
-            <DeviceLights />
-          </v-card-actions>
-        </v-card>
+              <v-card class="d-flex" :disabled="!state.powered">
+                <v-card-actions class="d-flex flex-column align-center">
+                  <IndicatorLights />
+                  <LibrarySlider />
+                </v-card-actions>
+                <v-card-text>
+                  <MainScreen class="h-100" />
+                </v-card-text>
+              </v-card>
 
-        <v-card :disabled="!state.powered">
-          <v-card-title><v-label>com transmission</v-label></v-card-title>
-          <v-card-actions class="d-flex justify-space-evenly">
-            <BtnAcctPool />
-            <BtnIntershpTricrdr />
-            <EmergencyButton />
-          </v-card-actions>
-        </v-card>
+              <v-card :disabled="!state.powered">
+                <v-card-title>
+                  <v-label>device input</v-label>
+                </v-card-title>
+                <v-card-actions class="d-flex justify-space-evenly align-center">
+                  <DeviceInput />
+                  <DeviceLights />
+                </v-card-actions>
+              </v-card>
+
+              <v-card :disabled="!state.powered">
+                <v-card-title><v-label>com transmission</v-label></v-card-title>
+                <v-card-actions class="d-flex justify-space-evenly">
+                  <BtnAcctPool />
+                  <BtnIntershpTricrdr />
+                  <EmergencyButton />
+                </v-card-actions>
+              </v-card>
 
 
-        <v-card :disabled="!state.powered">
-          <v-card-title><v-label>image record</v-label></v-card-title>
-          <v-card-actions class="d-flex justify-space-evenly">
-            <BtnFwdInput />
-            <BtnRwdErase />
-            <InternalExternalButtons />
-          </v-card-actions>
-        </v-card>
+              <v-card :disabled="!state.powered">
+                <v-card-title><v-label>image record</v-label></v-card-title>
+                <v-card-actions class="d-flex justify-space-evenly">
+                  <BtnFwdInput />
+                  <BtnRwdErase />
+                  <InternalExternalButtons />
+                </v-card-actions>
+              </v-card>
 
-        <v-card :disabled="!state.powered">
-          <v-card-actions>
-            <BtnID />
-          </v-card-actions>
-        </v-card>
+              <v-card :disabled="!state.powered">
+                <v-card-actions>
+                  <BtnID />
+                </v-card-actions>
+              </v-card>
+
+            </v-expansion-panel-text>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </v-main>
     </v-app>
   </v-responsive>

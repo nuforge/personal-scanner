@@ -81,6 +81,7 @@ export const useStateStore = defineStore('state', () => {
     ]),
   )
   // Components
+  const openCase = ref(false)
   const powerSwitch = ref(true)
   const powerButton = ref(true)
 
@@ -152,6 +153,7 @@ export const useStateStore = defineStore('state', () => {
     powered,
     library,
     librarySlider,
+    openCase,
     powerSwitch,
     powerButton,
     deviceInput,
