@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import { useStateStore } from '@/stores/state';
+import { useStateStore } from '@/stores/scanner';
 const state = useStateStore()
 
 </script>

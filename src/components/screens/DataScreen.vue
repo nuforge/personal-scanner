@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useStateStore } from '@/stores/state';
+import { useStateStore } from '@/stores/scanner';
 const state = useStateStore()
 
 const color = computed(() => `rgb(${state.getValue('delta')}, ${state.getValue('gamma')}, ${state.getValue('beta')})`)

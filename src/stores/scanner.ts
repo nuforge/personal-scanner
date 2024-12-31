@@ -1,7 +1,7 @@
 import { ref, computed, reactive } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useStateStore = defineStore('state', () => {
+export const useScannerStore = defineStore('scanner', () => {
   const power = ref(true)
   const emergency = ref(false)
 

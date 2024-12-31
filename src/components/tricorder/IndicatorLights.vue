@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { useStateStore } from '@/stores/state';
+import { useStateStore } from '@/stores/scanner';
 const lights = ['alpha', 'beta', 'delta', 'gamma']
 const state = useStateStore()
 

@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { useStateStore } from '@/stores/state';
+import { useStateStore } from '@/stores/scanner';
 const state = useStateStore()
 
 // Ensure deviceInput is typed as an array of strings

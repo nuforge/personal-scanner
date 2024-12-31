@@ -1,13 +1,13 @@
 <template>
-  <v-switch v-model="state.powerSwitch" inset color="green" density="compact" variant="filled" append-icon="mdi-power"
-    false-icon="mdi-power-off" @click.stop>
+  <v-switch class="round-sm" v-model="state.powerSwitch" inset color="green" density="compact" variant="filled"
+    false-icon="mdi-power" true-icon="mdi-power-on" @click.stop>
   </v-switch>
 </template>
 
 <script setup lang="ts">
-import { useStateStore } from '@/stores/state';
+import { useScannerStore } from '@/stores/scanner';
 
-const state = useStateStore()
+const state = useScannerStore()
 
 </script>
 
