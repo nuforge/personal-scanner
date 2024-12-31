@@ -8,7 +8,7 @@
     </thead>
     <tbody>
       <tr v-for="[key, system] in scanner.device.systems" :key="key">
-        <td><v-icon icon="mdi-circle-small" :color="system.rgba" v-if="system.active"></v-icon> </td>
+        <td><v-icon icon="mdi-circle-small" :color="system.rgba" v-show="system.active"></v-icon> </td>
 
         <td>{{ Math.ceil(system.value / system.max * 100) }}%</td>
       </tr>
