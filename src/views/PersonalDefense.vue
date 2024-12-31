@@ -1,6 +1,6 @@
 <template>
 
-  <v-card class="bg-surface d-flex flex-column align-center my-10 mx-auto rounded-pill pb-16" max-width="230">
+  <v-card class="bg-surface d-flex flex-column align-center my-10 mx-auto rounded-pill pb-16" width="230">
     <BeamEmitter />
     <v-row class="my-2 ">
       <v-col>

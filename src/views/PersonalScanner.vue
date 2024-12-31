@@ -1,14 +1,16 @@
 <template>
-  <v-expansion-panels bg-color="transparent" flat static variant="default">
+  <v-expansion-panels bg-color="transparent" flat static variant="accordion">
+
     <v-expansion-panel v-model="scanner.openCase" value="bar">
       <v-expansion-panel-title color="surface" :icon="false" variant="plain" hide-actions>
         <v-btn variant="plain" :ripple="false">
           <PowerSwitch />
         </v-btn>
       </v-expansion-panel-title>
+
       <v-expansion-panel-text>
 
-        <v-card :disabled="scanner.powered">
+        <v-card :disabled="scanner.device.powered">
           <v-card-actions class="d-flex justify-space-around">
             <v-sheet>
               <PowerButton />
@@ -26,7 +28,7 @@
           </v-card-actions>
         </v-card>
 
-        <v-card class="d-flex" :disabled="scanner.powered">
+        <v-card class="d-flex" :disabled="scanner.device.powered">
           <v-card-actions class="d-flex flex-column align-center">
             <IndicatorLights />
             <LibrarySlider />
@@ -36,7 +38,7 @@
           </v-card-text>
         </v-card>
 
-        <v-card :disabled="scanner.powered">
+        <v-card :disabled="scanner.device.powered">
           <v-card-title>
             <v-label>device input</v-label>
           </v-card-title>
@@ -46,7 +48,7 @@
           </v-card-actions>
         </v-card>
 
-        <v-card :disabled="scanner.powered">
+        <v-card :disabled="scanner.device.powered">
           <v-card-title><v-label>com transmission</v-label></v-card-title>
           <v-card-actions class="d-flex justify-space-evenly">
             <BtnAcctPool />
@@ -55,7 +57,7 @@
           </v-card-actions>
         </v-card>
 
-        <v-card :disabled="scanner.powered">
+        <v-card :disabled="scanner.device.powered">
           <v-card-title><v-label>image record</v-label></v-card-title>
           <v-card-actions class="d-flex justify-space-evenly">
             <BtnFwdInput />
@@ -64,7 +66,7 @@
           </v-card-actions>
         </v-card>
 
-        <v-card :disabled="scanner.powered">
+        <v-card :disabled="scanner.device.powered">
           <v-card-actions>
             <BtnID />
           </v-card-actions>

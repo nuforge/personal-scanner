@@ -12,7 +12,7 @@ const defense = useDefenseStore();
 
 
 
-const alpha = computed(() => defense.device.intensityPercent * 255 * defense.device.widthPercent)
+const alpha = computed(() => defense.device.intensityPercent * 255)
 
 const red = computed(() => 255)
 const blue = computed(() => (defense.device.widthPercent * 255) / 100)

@@ -1,7 +1,7 @@
 <template>
   <v-responsive>
     <v-app :theme="theme">
-      <v-main width="400" class="mx-auto">
+      <v-main class="mx-auto">
         <router-view></router-view>
       </v-main>
     </v-app>
