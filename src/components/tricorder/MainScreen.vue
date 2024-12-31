@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DataScreen from '../screens/DataScreen.vue';
+import DataScreen from '@/components/tricorder/screens/DataScreen.vue';
 
 </script>
 

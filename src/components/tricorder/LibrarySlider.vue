@@ -3,7 +3,7 @@
     <v-slider direction="vertical" v-model="slider" min="0" max="1" step="0.01" :thumb-color="thumbColor"
       track-size="20" :track-color="deltaNeg ? trackColor : 'background '" :thumb-size="slider ? 40 : 0"
       :track-fill-color="deltaPos ? trackColor : 'background '" @start="startDrag" @end="endDrag"
-      :disabled="!state.powered">
+      :disabled="scanner.powered">
     </v-slider>
     <v-label>library</v-label>
   </v-sheet>
@@ -11,8 +11,8 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { useStateStore } from '@/stores/state';
-const state = useStateStore()
+import { useScannerStore } from '@/stores/scanner';
+const scanner = useScannerStore()
 
 const slider = ref(0)
 const initVal = ref(0)
@@ -57,7 +57,7 @@ const startDrag = () => {
 }
 
 const endDrag = () => {
-  state.applyDelta(deltaValue.value)
+  scanner.applyDelta(deltaValue.value)
   resetSlider()
 }
 

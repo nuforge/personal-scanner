@@ -1,18 +1,18 @@
 <template>
   <v-item-group>
     <v-item v-for="light in lights" :key="light">
-      <v-btn :prepend-icon="state.getIcon(light)" variant="text" @click="state.toggleSystem(light)"
-        :disabled="!state.powered" append-icon="mdi-checkbox-blank" block class="d-flex justify-space-between"
+      <v-btn :prepend-icon="scanner.device.getIcon(light)" variant="text" @click="scanner.device.toggleSystem(light)"
+        :disabled="!scanner.device.powered" append-icon="mdi-checkbox-blank" block class="d-flex justify-space-between"
         :text="show ? light : undefined">
         <template #prepend>
-          <v-icon :color="state.checkActive(light) ? state.getColor(light) : 'disabled'"
-            :disabled="!state.checkPowered(light)"></v-icon>
+          <v-icon :color="scanner.device.checkActive(light) ? scanner.device.getColor(light) : 'disabled'"
+            :disabled="!scanner.device.checkPowered(light)"></v-icon>
           <v-tooltip activator="parent"><v-icon></v-icon> {{ light }}
           </v-tooltip>
         </template>
         <template #append>
-          <v-icon :icon="state.checkPowered(light) ? 'mdi-checkbox-blank' : 'mdi-checkbox-blank-outline'"
-            :disabled="!state.checkActive(light)" color="success"></v-icon>
+          <v-icon :icon="scanner.device.checkPowered(light) ? 'mdi-checkbox-blank' : 'mdi-checkbox-blank-outline'"
+            :disabled="!scanner.device.checkActive(light)" color="success"></v-icon>
         </template>
       </v-btn>
     </v-item>
@@ -20,9 +20,9 @@
 </template>
 
 <script setup lang="ts">
-import { useStateStore } from '@/stores/state';
+import { useScannerStore } from '@/stores/scanner';
 const lights = ['alpha', 'beta', 'delta', 'gamma']
-const state = useStateStore()
+const scanner = useScannerStore()
 
 const show = false
 

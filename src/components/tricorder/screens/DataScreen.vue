@@ -7,7 +7,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="[key, system] in state.systems" :key="key">
+      <tr v-for="[key, system] in scanner.device.systems" :key="key">
         <td><v-icon icon="mdi-circle-small" :color="system.rgba" v-if="system.active"></v-icon> </td>
 
         <td>{{ Math.ceil(system.value / system.max * 100) }}%</td>
@@ -15,7 +15,7 @@
     </tbody>
   </v-table>
   <v-btn prepend-icon="mdi-circle-outline" append-icon="mdi-circle" text="data" :color="color" variant="tonal"
-    :disabled="!state.powered" block class="d-flex justify-space-between">
+    :disabled="scanner.device.powered" block class="d-flex justify-space-between">
     <template #prepend>
       <v-icon :color="appearance"></v-icon>
     </template>
@@ -31,12 +31,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useStateStore } from '@/stores/state';
-const state = useStateStore()
+import { useScannerStore } from '@/stores/scanner';
+const scanner = useScannerStore()
 
-const color = computed(() => `rgb(${state.getValue('delta')}, ${state.getValue('gamma')}, ${state.getValue('beta')})`)
+const color = computed(() => `rgb(${scanner.device.getValue('delta')}, ${scanner.device.getValue('gamma')}, ${scanner.device.getValue('beta')})`)
 
-const appearance = computed(() => `rgba(${state.getValue('delta')}, ${state.getValue('gamma')}, ${state.getValue('beta')}, ${state.getValue('alpha')})`)
+const appearance = computed(() => `rgba(${scanner.device.getValue('delta')}, ${scanner.device.getValue('gamma')}, ${scanner.device.getValue('beta')}, ${scanner.device.getValue('alpha')})`)
 
 
 
