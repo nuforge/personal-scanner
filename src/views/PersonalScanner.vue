@@ -10,7 +10,7 @@
 
       <v-expansion-panel-text>
 
-        <v-card :disabled="scanner.device.powered">
+        <v-card :disabled="!scanner.device.powered">
           <v-card-actions class="d-flex justify-space-around">
             <v-sheet>
               <PowerButton />
@@ -28,7 +28,7 @@
           </v-card-actions>
         </v-card>
 
-        <v-card class="d-flex" :disabled="scanner.device.powered">
+        <v-card class="d-flex" :disabled="!scanner.device.powered">
           <v-card-actions class="d-flex flex-column align-center">
             <IndicatorLights />
             <LibrarySlider />
@@ -38,7 +38,7 @@
           </v-card-text>
         </v-card>
 
-        <v-card :disabled="scanner.device.powered">
+        <v-card :disabled="!scanner.device.powered">
           <v-card-title>
             <v-label>device input</v-label>
           </v-card-title>
@@ -48,7 +48,7 @@
           </v-card-actions>
         </v-card>
 
-        <v-card :disabled="scanner.device.powered">
+        <v-card :disabled="!scanner.device.powered">
           <v-card-title><v-label>com transmission</v-label></v-card-title>
           <v-card-actions class="d-flex justify-space-evenly">
             <BtnAcctPool />
@@ -57,7 +57,7 @@
           </v-card-actions>
         </v-card>
 
-        <v-card :disabled="scanner.device.powered">
+        <v-card :disabled="!scanner.device.powered">
           <v-card-title><v-label>image record</v-label></v-card-title>
           <v-card-actions class="d-flex justify-space-evenly">
             <BtnFwdInput />
@@ -66,7 +66,7 @@
           </v-card-actions>
         </v-card>
 
-        <v-card :disabled="scanner.device.powered">
+        <v-card :disabled="!scanner.device.powered">
           <v-card-actions>
             <BtnID />
           </v-card-actions>
