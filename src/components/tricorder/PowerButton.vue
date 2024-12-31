@@ -1,11 +1,12 @@
 <template>
   <v-btn text="PWR" stacked append-icon="mdi-power"
-    :color="state.checkPowered('power') ? state.getColor('power') : `disabled`" variant="plain" density="compact"
-    size="small"></v-btn>
+    :color="scanner.device.checkPowered('power') ? scanner.device.getColor('power') : `disabled`" variant="plain"
+    density="compact" size="small"></v-btn>
 </template>
 
 <script setup lang="ts">
-import { useStateStore } from '@/stores/scanner';
-const state = useStateStore()
+import { useScannerStore } from '@/stores/scanner';
+
+const scanner = useScannerStore()
 
 </script>
