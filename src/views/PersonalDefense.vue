@@ -4,10 +4,10 @@
     <BeamEmitter />
     <v-row class="my-2 ">
       <v-col>
-        <v-btn variant="tonal" class="py-14 rounded-ts-xl elevation-3"></v-btn>
+        <v-btn variant="tonal" class="py-14 rounded-ts-xl elevation-3" :ripple="false"></v-btn>
       </v-col>
       <v-col>
-        <v-btn variant="tonal" class="py-14 rounded-te-xl elevation-3"></v-btn>
+        <v-btn variant="tonal" class="py-14 rounded-te-xl elevation-3" :ripple="false"></v-btn>
       </v-col>
     </v-row>
     <v-sheet class="d-flex flex-column align-center justify-center py-2 ga-4 pb-16 mb-16">

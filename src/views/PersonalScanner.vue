@@ -27,7 +27,7 @@ import LabelDataSense from '@/components/tricorder/labels/LabelDataSense.vue';
 <template>
   <v-expansion-panels bg-color="transparent" flat static variant="accordion">
 
-    <v-expansion-panel v-model="scanner.openCase" value="bar">
+    <v-expansion-panel v-model="scanner.openCase" value="bar" min-width="400px">
       <v-expansion-panel-title color="surface" :icon="false" variant="plain" hide-actions>
         <v-btn variant="plain" :ripple="false">
           <PowerSwitch />
