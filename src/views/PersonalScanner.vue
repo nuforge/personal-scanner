@@ -1,3 +1,29 @@
+<script setup lang="ts">
+import { useScannerStore } from '@/stores/scanner';
+const scanner = useScannerStore()
+
+import PowerSwitch from '@/components/tricorder/PowerSwitch.vue';
+import LibrarySlider from '@/components/tricorder/LibrarySlider.vue';
+import IndicatorLights from '@/components/tricorder/lights/IndicatorLights.vue';
+import MainScreen from '@/components/tricorder/MainScreen.vue';
+import PowerButton from '@/components/tricorder/buttons/PowerButton.vue';
+import DeviceInput from '@/components/tricorder/DeviceInput.vue';
+import DeviceLights from '@/components/tricorder/lights/DeviceLights.vue';
+import FunctionButtons from '@/components/tricorder/buttons/FunctionButtons.vue';
+
+import EmergencyButton from '@/components/tricorder/buttons/EmergencyButton.vue';
+import BtnAcctPool from '@/components/tricorder/buttons/BtnAcctPool.vue';
+import BtnIntershpTricrdr from '@/components/tricorder/buttons/BtnIntershpTricrdr.vue';
+import BtnFwdInput from '@/components/tricorder/buttons/BtnFwdInput.vue';
+import BtnRwdErase from '@/components/tricorder/buttons/BtnRwdErase.vue';
+import BtnID from '@/components/tricorder/buttons/BtnID.vue';
+import InternalExternalButtons from '@/components/tricorder/buttons/InternalExternalButtons.vue';
+import LabelExSys from '@/components/tricorder/labels/LabelExSys.vue';
+import LabelDataSense from '@/components/tricorder/labels/LabelDataSense.vue';
+
+</script>
+
+
 <template>
   <v-expansion-panels bg-color="transparent" flat static variant="accordion">
 
@@ -76,30 +102,3 @@
     </v-expansion-panel>
   </v-expansion-panels>
 </template>
-
-<script setup lang="ts">
-import { useScannerStore } from '@/stores/scanner';
-const scanner = useScannerStore()
-
-import PowerSwitch from '@/components/tricorder/PowerSwitch.vue';
-import LibrarySlider from '@/components/tricorder/LibrarySlider.vue';
-import IndicatorLights from '@/components/tricorder/IndicatorLights.vue';
-import MainScreen from '@/components/tricorder/MainScreen.vue';
-import PowerButton from '@/components/tricorder/PowerButton.vue';
-import DeviceInput from '@/components/tricorder/DeviceInput.vue';
-import DeviceLights from '@/components/tricorder/DeviceLights.vue';
-import FunctionButtons from '@/components/tricorder/FunctionButtons.vue';
-
-
-
-import EmergencyButton from '@/components/tricorder/EmergencyButton.vue';
-import BtnAcctPool from '@/components/tricorder/BtnAcctPool.vue';
-import BtnIntershpTricrdr from '@/components/tricorder/BtnIntershpTricrdr.vue';
-import BtnFwdInput from '@/components/tricorder/BtnFwdInput.vue';
-import BtnRwdErase from '@/components/tricorder/BtnRwdErase.vue';
-import BtnID from '@/components/tricorder/BtnID.vue';
-import InternalExternalButtons from '@/components/tricorder/InternalExternalButtons.vue';
-import LabelExSys from '@/components/tricorder/LabelExSys.vue';
-import LabelDataSense from '@/components/tricorder/LabelDataSense.vue';
-
-</script>

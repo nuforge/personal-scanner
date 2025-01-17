@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+const theme = ref('dark')
+
+</script>
+
+<style scoped></style>
+
 <template>
   <v-responsive>
     <v-app :theme="theme">
@@ -7,11 +15,3 @@
     </v-app>
   </v-responsive>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-const theme = ref('dark')
-
-</script>
-
-<style scoped></style>
